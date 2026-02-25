@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>موقعنا الخاص</title>
+<style>
+  /* إعدادات عامة */
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+  }
+
+  .page {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 0.5s;
+  }
+
+  .active {
+    display: flex;
+  }
+
+  /* الصفحة الأولى */
+  #page1 {
+    background-color: white;
+    overflow: hidden;
+  }
+
+  /* القلوب المتحركة */
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    clip-path: polygon(50% 0%, 61% 13%, 75% 13%, 88% 25%, 88% 50%, 50% 90%, 12% 50%, 12% 25%, 25% 13%, 39% 13%);
+    animation: moveUp 5s linear infinite;
+    opacity: 0.7;
+  }
+
+  @keyframes moveUp {
+    0% { transform: translateY(100vh) scale(0.5); opacity: 0.7; }
+    100% { transform: translateY(25vh) scale(1); opacity: 1; }
+  }
+
+  /* صندوق الباسورد */
+  .login-box {
+    background-color: rgba(255,255,255,0.5);
+    padding: 30px 50px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 10;
+  }
+
+  .login-box input {
+    padding: 10px 15px;
+    font-size: 18px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    outline: none;
+    width: 200px;
+    color: gray;
+  }
+
+  .login-box button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    background-color: #B20000;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+  }
+
+  .login-box button:hover {
+    transform: translateY(-2px);
+  }
+
+  /* الصفحة الثانية */
+  #page2 {
+    background-color: #B20000;
+    color: white;
+  }
+
+  .ready-button {
+    padding: 20px 40px;
+    font-size: 24px;
+    border-radius: 15px;
+    background-color: red;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    cursor: pointer;
+    color: white;
+    transition: transform 0.2s;
+  }
+
+  .ready-button:hover {
+    transform: translateY(-2px);
+  }
+
+  /* الصفحة الثالثة */
+  #page3 {
+    background-color: #B20000;
+    color: white;
+    text-align: center;
+    overflow-y: auto;
+    padding: 20px;
+  }
+
+  .big-heart {
+    font-size: 120px;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  }
+
+  .names {
+    font-family: 'Cursive', sans-serif;
+    font-size: 36px;
+  }
+
+  .forever {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .countdown {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .show-message-btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 15px;
+    background-color: rgba(255,255,255,0.3);
+    border: none;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+  }
+
+  .message-box {
+    max-width: 500px;
+    padding: 20px;
+    background-color: rgba(255,255,255,0.3);
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    margin: 0 auto 20px;
+    display: none;
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .love-text {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- الصفحة الأولى -->
+<div id="page1" class="page active">
+  <div class="login-box">
+    <div>أول يوم لينا</div>
+    <input type="password" id="password" placeholder="أدخل الباسورد">
+    <br>
+    <button onclick="checkPassword()">دخول</button>
+  </div>
+</div>
+
+<!-- الصفحة الثانية -->
+<div id="page2" class="page">
+  <button class="ready-button" onclick="goPage3()">جاهزة</button>
+</div>
+
+<!-- الصفحة الثالثة -->
+<div id="page3" class="page">
+  <div class="names">𝒀𝑶𝑺𝑺𝑬𝑭 & 𝑱𝑨𝑵𝑨</div>
+  <div class="forever">𝑭𝑶𝑹𝑬𝑽𝑬𝑹</div>
+  <div class="big-heart">❤️</div>
+  <div class="countdown" id="countdown"></div>
+  <button class="show-message-btn" onclick="showMessage()">اظهار الرسالة</button>
+  <div class="message-box" id="messageBox"></div>
+  <div class="love-text" id="loveText">❤️‍🔥𝑩𝑨𝑯𝑬𝑩𝑬𝑲 𝑨𝑾𝑬𝑬❤️‍🔥</div>
+</div>
+
+<script>
+  // إنشاء قلوب متحركة
+  for(let i=0;i<30;i++){
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = Math.random()*100 + 'vw';
+    heart.style.animationDuration = (3+Math.random()*4) + 's';
+    document.getElementById('page1').appendChild(heart);
+  }
+
+  // التحقق من الباسورد
+  function checkPassword() {
+    const pass = document.getElementById('password').value;
+    if(pass === '1052024') {
+      document.getElementById('page1').classList.remove('active');
+      document.getElementById('page2').classList.add('active');
+    } else {
+      alert('الباسورد خطأ');
+    }
+  }
+
+  // الانتقال للصفحة الثالثة
+  function goPage3() {
+    document.getElementById('page2').classList.remove('active');
+    document.getElementById('page3').classList.add('active');
+    startCountdown();
+  }
+
+  // عداد للوقت منذ 10/5/2024 الساعة 6
+  function startCountdown() {
+    const countEl = document.getElementById('countdown');
+    const targetDate = new Date(2024,4,10,6,0,0); // شهر مايو = 4
+    function updateCountdown(){
+      const now = new Date();
+      let diff = now - targetDate;
+      if(diff<0) diff = 0;
+      const days = Math.floor(diff/(1000*60*60*24));
+      const hours = Math.floor((diff/(1000*60*60))%24);
+      const minutes = Math.floor((diff/(1000*60))%60);
+      const seconds = Math.floor((diff/1000)%60);
+      countEl.innerHTML = `${days} يوم ${hours} ساعة ${minutes} دقيقة ${seconds} ثانية`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown,1000);
+  }
+
+  // اظهار الرسالة تدريجياً
+  function showMessage(){
+    const box = document.getElementById('messageBox');
+    box.style.display = 'block';
+    box.innerHTML = '';
+    const message = "عامله اي ازيك يارب تكوني بخير دايما عامله اي ازيك";
+    let i=0;
+    function typeWriter(){
+      if(i<message.length){
+        box.innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+      }
+    }
+    typeWriter();
+  }
+</script>
+</body>
+</html>
