@@ -190,13 +190,17 @@
 </head>
 <body>
 <script>
-  if (!sessionStorage.getItem("accessGranted")) {
-    window.location.href = "passwordPage.html";
-  } else {
-    sessionStorage.removeItem("accessGranted");
+  const access = sessionStorage.getItem("accessGranted");
+
+  if (!access) {
+    window.location.replace("passwordPage.html");
   }
-</script>
-  
+
+  // امسح الصلاحية بعد 1 ثانية عشان يسمح بالتحميل الأول
+  setTimeout(() => {
+    sessionStorage.removeItem("accessGranted");
+  }, 1000);
+</script>  
 <div class="floating-hearts" id="floatingHearts"></div>
 
 <div class="main-container">
