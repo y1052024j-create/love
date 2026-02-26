@@ -85,12 +85,22 @@
       margin-top:4px;
     }
 
-    .small-image {
-      width: 20px;   /* عرض الصورة */
-      height: 30px;  /* طول الصورة */
-      object-fit: cover;
-      border-radius: 30%; /* حواف دائرية */
-    }
+    /* ===== صور جنب الأسماء ===== */
+.side-image {
+  width: 30px;       /* حجم الصورة */
+  height: 40px;
+  object-fit: cover;
+  border-radius: 40%; /* حواف دائرية */
+  vertical-align: middle; /* يثبتها على نفس خط الاسم */
+}
+
+.left-img {
+  margin-right: 5px;  /* مسافة عن JANA */
+}
+
+.right-img {
+  margin-left: 5px;   /* مسافة عن YOSSEF */
+}
 
     .heart-wrapper{
       position:relative;
@@ -209,20 +219,16 @@
 <div class="main-container">
 
 <div class="names">
-<h1>
-  <span class="name-with-image">
-    JANA
+  <h1>
     <img src="Picsart_26-02-25_19-06-12-104.jpg
-" alt="صورة JANA" class="small-image" id="imageJana">
-  </span>
-  & 
-  <span class="name-with-image">
+" alt="صورة جنى" class="side-image left-img">
+    JANA
+    &
     YOSSEF
     <img src="Picsart_26-02-25_19-06-12-104.jpg
-" alt="صورة YOSSEF" class="small-image" id="imageYossef">
-  </span>
-</h1>
-<p>FOREVER</p>
+" alt="صورة يوسف" class="side-image right-img">
+  </h1>
+  <p>FOREVER</p>
 </div>
 
 
