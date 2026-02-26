@@ -39,6 +39,13 @@ body {
   90% { opacity: 0.7; }
   100% { transform: translateY(-70vh) scale(1); opacity: 0; }
 }
+  .top-image {
+  width: 80px;      /* عرض الصورة */
+  height: 80px;     /* طول الصورة */
+  object-fit: cover; /* يحافظ على نسب الصورة */
+  margin-bottom: 15px; /* مسافة بين الصورة والمربع */
+  border-radius: 10px; /* حواف دائرية لو عايز */
+  }
 
 /* المربع الرئيسي */
 .login-container {
@@ -141,8 +148,11 @@ h1 {
 
 <!-- القلوب المتحركة في الخلفية -->
 <div class="floating-hearts" id="floatingHearts"></div>
-
+  
+<!-- إضافة الصورة فوق المربع -->
+<img src="Picsart_26-02-25_19-00-01-088.jpg" alt="صورة صغيرة" class="top-image">
 <div class="login-container">
+  
   <h1>ادخل كلمة السر</h1>
   <input type="password" id="passwordInput" class="password-input" placeholder="اول يوم لينا">
   <button id="loginBtn" class="login-btn">دخول</button>
