@@ -16,6 +16,28 @@ body {
   height: 100vh;
   margin: 0;
 }
+  /* ===== القلوب المتحركة في الخلفية ===== */
+.floating-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -50px;
+  color: rgba(255, 255, 255, 0.15);
+  animation: floatUp ease-in-out forwards;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% { transform: translateY(-70vh) scale(1); opacity: 0; }
+}
   
 .top-image {
   width: 80px;      /* عرض الصورة */
@@ -24,6 +46,9 @@ body {
   margin-bottom: 15px; /* مسافة بين الصورة والمربع */
   border-radius: 10px; /* حواف دائرية لو عايز */
 }
+  
+  <!-- القلوب المتحركة في الخلفية -->
+<div class="floating-hearts" id="floatingHearts"></div>
   
 /* المربع الرئيسي */
 .login-container {
@@ -157,7 +182,27 @@ loginBtn.addEventListener("click", () => {
 readyBtn.addEventListener("click", () => {
   window.location.href = "secondPage.html"; // الرابط للصفحة التانية
 });
-</script>
+  
+  // ===== القلوب المتحركة =====
+function createFloatingHeart() {
+  const container = document.getElementById("floatingHearts");
+  const heart = document.createElement("div");
+  heart.classList.add("floating-heart");
+  heart.textContent = "♥";
+  heart.style.left = Math.random() * 100 + "%";
+  heart.style.fontSize = (20 + Math.random() * 25) + "px";
+  heart.style.animationDuration = (6 + Math.random() * 6) + "s";
+  container.appendChild(heart);
 
+  setTimeout(() => heart.remove(), 12000);
+}
+
+// ابدأ ظهور القلوب تدريجي
+for (let i = 0; i < 8; i++) {
+  setTimeout(createFloatingHeart, i * 500);
+}
+setInterval(createFloatingHeart, 1500);
+  
+</script>
 </body>
 </html>
