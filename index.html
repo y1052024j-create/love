@@ -10,9 +10,10 @@ body {
   font-family: 'Cairo', sans-serif;
   background: #B20000;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 100vh;
   margin: 0;
 }
 
@@ -22,7 +23,7 @@ body {
   padding: 30px 20px;
   border-radius: 20px;
   text-align: center;
-  width: 80%;
+  width: 90%;
   max-width: 320px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.7);
 }
@@ -47,14 +48,13 @@ h1 {
 }
 
 .password-input::placeholder {
-  color: #b0b0b0; /* الرصاصي */
+  color: #b0b0b0; /* placeholder رصاصي */
   font-weight: 500;
 }
 
-.login-btn, .ready-btn {
+.login-btn {
   width: 100%;
   padding: 10px;
-  margin-top: 10px;
   border-radius: 10px;
   font-size: 15px;
   font-weight: 700;
@@ -62,11 +62,8 @@ h1 {
   cursor: pointer;
   box-shadow: 0 5px 15px rgba(0,0,0,0.6);
   border: none;
-  transition: all 0.3s ease;
-}
-
-.login-btn {
   background: hsl(0,100%,45%);
+  transition: all 0.3s ease;
 }
 
 .login-btn:hover {
@@ -74,11 +71,22 @@ h1 {
   box-shadow: 0 0 20px rgba(255,0,0,0.7);
 }
 
+/* زرار جاهزه تحت المربع */
 .ready-btn {
-  display: none;       /* يظهر بعد الباسورد */
-  background: hsl(0,100%,70%);
-  opacity: 0;          /* بداية شفافة */
-  transition: opacity 0.10s ease-in-out; /* حركة Fade */
+  width: 90%;  /* متساوي تقريبا مع المربع */
+  max-width: 320px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+  border: none;
+  background: hsl(0,100%,45%);
+  transition: all 0.3s ease;
+  opacity: 0;
+  display: none;
 }
 
 .ready-btn.show {
@@ -87,8 +95,8 @@ h1 {
 }
 
 .ready-btn:hover {
-  background: hsl(0,100%,75%);
-  box-shadow: 0 0 20px rgba(255,0,0,0.6);
+  background: hsl(0,100%,50%);
+  box-shadow: 0 0 20px rgba(255,0,0,0.7);
 }
 
 .error-msg {
@@ -105,9 +113,11 @@ h1 {
   <h1>ادخل كلمة السر</h1>
   <input type="password" id="passwordInput" class="password-input" placeholder="اول يوم لينا">
   <button id="loginBtn" class="login-btn">دخول</button>
-  <button id="readyBtn" class="ready-btn">جاهزه</button>
   <p id="errorMsg" class="error-msg">كلمة المرور خاطئة ❌</p>
 </div>
+
+<!-- زرار جاهزه تحت المربع مباشرة -->
+<button id="readyBtn" class="ready-btn">جاهزه</button>
 
 <script>
 const passwordInput = document.getElementById("passwordInput");
@@ -115,23 +125,19 @@ const loginBtn = document.getElementById("loginBtn");
 const readyBtn = document.getElementById("readyBtn");
 const errorMsg = document.getElementById("errorMsg");
 
-// كلمة السر المطلوبة
 const PASSWORD = "1052024";
 
-// الضغط على زر "دخول"
 loginBtn.addEventListener("click", () => {
   if(passwordInput.value === PASSWORD){
     errorMsg.style.display = "none";
-    readyBtn.classList.add("show"); // يظهر الزرار تدريجيًا
+    readyBtn.classList.add("show"); // يظهر الزرار تدريجي
   } else {
     errorMsg.style.display = "block";
   }
 });
 
-// الضغط على زر "جاهزه"
 readyBtn.addEventListener("click", () => {
-  // هنا ممكن تربط بالصفحة التانية
-  window.location.href = "secondPage.html"; // بعد ما تعمل الصفحة التانية
+  window.location.href = "secondPage.html"; // الرابط للصفحة التانية
 });
 </script>
 
