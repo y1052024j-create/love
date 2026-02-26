@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>صفحة الدخول - JANA & YOSSEF</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<title>JANA & YOSSEF</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
 <style>
+/* ===== صفحة الدخول ===== */
 body {
   font-family: 'Cairo', sans-serif;
   background: #B20000;
@@ -13,7 +14,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  min-height: 90vh;
   margin: 0;
 }
 
@@ -26,8 +27,6 @@ body {
   max-width: 320px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.7);
   padding: 30px 20px;
-
-  /* Flex لضبط العناصر وسط المربع */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,7 +81,7 @@ h1 {
   width: 90%;
   max-width: 320px;
   padding: 10px;
-  margin-top: 30px; /* مسافة من المربع */
+  margin-top: 30px;
   border-radius: 10px;
   font-size: 15px;
   font-weight: 700;
@@ -112,39 +111,296 @@ h1 {
   font-size: 14px;
   display: none;
 }
+
+/* ===== صفحة الرسالة ===== */
+.floating-hearts{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:0;
+}
+
+.floating-heart{
+  position:absolute;
+  bottom:-50px;
+  color:rgba(255,255,255,0.15);
+  animation:floatUp ease-in-out forwards;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(100vh) scale(0.5);opacity:0;}
+  10%{opacity:0.7;}
+  90%{opacity:0.7;}
+  100%{transform:translateY(-70vh) scale(1);opacity:0;}
+}
+
+@keyframes heartbeat{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.03);}
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(10px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+.main-container{
+  position:relative;
+  z-index:10;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:20px;
+  width:100%;
+}
+
+.names{text-align:center;margin:50px 0 24px;}
+.names h1{
+  font-family:'Dancing Script',cursive;
+  color:#fff;
+  font-size:2rem;
+  font-weight:700;
+  letter-spacing:2px;
+}
+.names p{
+  font-family:'Dancing Script',cursive;
+  color:rgba(255,255,255,0.8);
+  font-size:1.4rem;
+  margin-top:4px;
+}
+
+.heart-wrapper{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  animation:heartbeat 2s ease-in-out infinite;
+  filter:drop-shadow(0 20px 40px rgba(80,0,0,0.6));
+  margin-bottom:20px;
+}
+
+.heart-svg{
+  width:280px;
+  height:280px;
+}
+
+.timer-overlay{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding-top:16px;
+}
+
+.timer{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.timer-unit{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.timer-value{
+  color:#fff;
+  font-weight:700;
+  font-size:1.2rem;
+}
+
+.timer-label{
+  color:rgba(255,255,255,0.7);
+  font-size:10px;
+  margin-top:4px;
+}
+
+.show-btn{
+  margin-top:25px;
+  background:hsl(0,100%,45%);
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  padding:12px 20px;
+  font-weight:700;
+  cursor:pointer;
+  transition:0.3s;
+  font-family:'Cairo',sans-serif;
+}
+
+.show-btn:hover{
+  background:hsl(0,100%,50%);
+  box-shadow:0 0 20px rgba(255,0,0,0.5);
+}
+
+#secretContent{
+  display:none;
+  width:100%;
+  margin-top:40px;
+  flex-direction:column;
+  align-items:center;
+  animation:fadeIn 0.5s ease-out;
+}
+
+.text-box{
+  width:90%;
+  max-width:500px;
+  min-height:auto;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(12px);
+  border-radius:30px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.7);
+  padding:25px;
+  color:white;
+  font-size:18px;
+  line-height:1.8;
+  text-align:center;
+}
+
+.text-end{
+  margin-top:30px;
+  font-weight:bold;
+  color:white;
+  display:none;
+}
 </style>
 </head>
 <body>
 
+<!-- صفحة الدخول -->
 <div class="login-container">
   <h1>ادخل كلمة السر</h1>
   <input type="password" id="passwordInput" class="password-input" placeholder="اول يوم لينا">
   <button id="loginBtn" class="login-btn">دخول</button>
   <p id="errorMsg" class="error-msg">كلمة المرور خاطئة ❌</p>
 </div>
-
-<!-- زرار جاهزه تحت المربع مباشرة -->
 <button id="readyBtn" class="ready-btn">جاهزه</button>
 
+<!-- صفحة الرسالة -->
+<div class="floating-hearts" id="floatingHearts"></div>
+<div class="main-container" id="messagePage" style="display:none;">
+  <div class="names">
+    <h1>♥ JANA & YOSSEF ♥</h1>
+    <p>FOREVER</p>
+  </div>
+  <div class="heart-wrapper">
+    <svg class="heart-svg" viewBox="0 0 512 512">
+      <path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z" fill="hsl(0,100%,45%)"/>
+    </svg>
+    <div class="timer-overlay">
+      <div class="timer" id="timer"></div>
+    </div>
+  </div>
+  <button class="show-btn" id="showBtn">اظهر الرسالة ❤️</button>
+  <div id="secretContent">
+    <div class="text-box" id="textBox"></div>
+    <div class="text-end" id="textEnd">❤️‍🔥𝑩𝑨𝑯𝑬𝑩𝑬𝑲 𝑨𝑾𝑬𝑬❤️‍🔥</div>
+  </div>
+</div>
+
 <script>
+/* ===== صفحة الدخول ===== */
 const passwordInput = document.getElementById("passwordInput");
 const loginBtn = document.getElementById("loginBtn");
 const readyBtn = document.getElementById("readyBtn");
 const errorMsg = document.getElementById("errorMsg");
+const messagePage = document.getElementById("messagePage");
 
 const PASSWORD = "1052024";
 
 loginBtn.addEventListener("click", () => {
   if(passwordInput.value === PASSWORD){
     errorMsg.style.display = "none";
-    readyBtn.classList.add("show"); // يظهر الزرار تدريجي
+    readyBtn.classList.add("show");
   } else {
     errorMsg.style.display = "block";
   }
 });
 
 readyBtn.addEventListener("click", () => {
-  window.location.href = "secondPage.html"; // الرابط للصفحة التانية
+  // إخفاء صفحة الدخول واظهار صفحة الرسالة
+  document.querySelector('.login-container').style.display = 'none';
+  readyBtn.style.display = 'none';
+  messagePage.style.display = 'flex';
+});
+
+/* ===== صفحة الرسالة ===== */
+const START_DATE=new Date(2024,4,10,18,0,0);
+
+function updateTimer(){
+const now=new Date();
+const diff=now-START_DATE;
+const totalSeconds=Math.floor(diff/1000);
+
+const years=Math.floor(totalSeconds/(365.25*24*3600));
+const remainAfterYears=totalSeconds-years*Math.floor(365.25*24*3600);
+const days=Math.floor(remainAfterYears/(24*3600));
+const hours=Math.floor((remainAfterYears%(24*3600))/3600);
+const minutes=Math.floor((remainAfterYears%3600)/60);
+const seconds=remainAfterYears%60;
+
+const units=[
+{label:"سنة",value:years},
+{label:"يوم",value:days},
+{label:"ساعة",value:hours},
+{label:"دقيقة",value:minutes},
+{label:"ثانية",value:seconds},
+];
+
+document.getElementById("timer").innerHTML=
+units.map(u=>`
+<div class="timer-unit">
+<span class="timer-value">${String(u.value).padStart(2,"0")}</span>
+<span class="timer-label">${u.label}</span>
+</div>`).join("");
+}
+
+updateTimer();
+setInterval(updateTimer,1000);
+
+function createFloatingHeart(){
+const container=document.getElementById("floatingHearts");
+const heart=document.createElement("div");
+heart.classList.add("floating-heart");
+heart.textContent="♥";
+heart.style.left=Math.random()*100+"%";
+heart.style.fontSize=(20+Math.random()*25)+"px";
+heart.style.animationDuration=(6+Math.random()*6)+"s";
+container.appendChild(heart);
+setTimeout(()=>heart.remove(),12000);
+}
+
+for(let i=0;i<8;i++){
+setTimeout(createFloatingHeart,i*500);
+}
+setInterval(createFloatingHeart,1500);
+
+const showBtn=document.getElementById("showBtn");
+const secretContent=document.getElementById("secretContent");
+const textBox=document.getElementById("textBox");
+const textEnd=document.getElementById("textEnd");
+
+showBtn.addEventListener("click",function(){
+secretContent.style.display="flex";
+showBtn.style.display="none";
+
+const fullText=`(هنا حط الرسالة بتاعتك زي ما هي)`;
+
+let i=0;
+function typeWriter(){
+if(i<fullText.length){
+textBox.textContent+=fullText.charAt(i);
+i++;
+setTimeout(typeWriter,40);
+}else{
+textEnd.style.display="block";
+}
+}
+typeWriter();
 });
 </script>
 
