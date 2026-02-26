@@ -155,19 +155,30 @@
       animation:fadeIn 0.5s ease-out;
     }
 
-    .text-box{
-      width:600px;
-      min-height:2100px;
-      background:rgba(255,255,255,0.12);
-      backdrop-filter:blur(12px);
-      border-radius:30px;
-      box-shadow:0 30px 80px rgba(0,0,0,0.9);
-      padding:25px;
-      color:white;
-      font-size:20px;
-      line-height:1.8;
-      text-align:center;
-    }
+    #secretContent{
+  display:none;
+  width:100%;
+  margin-top:40px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+
+.text-box{
+  width:90%;
+  max-width:500px;   /* يخليه مايكبرش زيادة */
+  min-height:auto;   /* يشيل الطول الضخم */
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(12px);
+  border-radius:30px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.7);
+  padding:25px;
+  color:white;
+  font-size:18px;
+  line-height:1.8;
+  text-align:center;
+}
 
     .text-end{
       margin-top:30px;
