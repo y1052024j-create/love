@@ -13,7 +13,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
   margin: 0;
 }
 
@@ -137,14 +137,17 @@ const PASSWORD = "1052024";
 loginBtn.addEventListener("click", () => {
   if(passwordInput.value === PASSWORD){
     errorMsg.style.display = "none";
-    readyBtn.classList.add("show"); // يظهر الزرار تدريجي
+    // نعطي تصريح دخول للصفحة التانية
+    sessionStorage.setItem("accessGranted", "true");
+    readyBtn.classList.add("show"); 
   } else {
     errorMsg.style.display = "block";
   }
 });
 
 readyBtn.addEventListener("click", () => {
-  window.location.href = "secondPage.html"; // الرابط للصفحة التانية
+  // الدخول للصفحة التانية
+  window.location.href = "secondPage.html"; 
 });
 </script>
 
