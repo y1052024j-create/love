@@ -19,50 +19,50 @@ body {
 .login-container {
   background: rgba(255,255,255,0.12);
   backdrop-filter: blur(15px);
-  padding: 40px;
+  padding: 30px 20px;
   border-radius: 20px;
   text-align: center;
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+  width: 80%;
+  max-width: 320px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.7);
 }
 
 h1 {
   color: #fff;
   margin-bottom: 20px;
+  font-size: 22px;
 }
 
 .password-input {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 15px;
   border-radius: 10px;
   border: 1px solid rgba(255,255,255,0.3);
-  outline: none;
-  text-align: center;
-  font-size: 16px;
-  color: #fff;
   background: rgba(255,255,255,0.05);
-  margin-bottom: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.5);
 }
 
 .password-input::placeholder {
-  color: #b0b0b0; /* اللون الرصاصي */
+  color: #b0b0b0; /* الرصاصي */
   font-weight: 500;
 }
 
 .login-btn, .ready-btn {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   margin-top: 10px;
-  border: none;
   border-radius: 10px;
+  font-size: 15px;
   font-weight: 700;
-  font-size: 16px;
+  color: #fff;
   cursor: pointer;
-  color: #fff; /* نص أبيض */
-  transition: all 0.3s ease;
   box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+  border: none;
+  transition: all 0.3s ease;
 }
 
 .login-btn {
@@ -75,8 +75,15 @@ h1 {
 }
 
 .ready-btn {
-  display: none; /* يظهر بعد الباسورد الصحيح */
+  display: none;       /* يظهر بعد الباسورد */
   background: hsl(0,100%,70%);
+  opacity: 0;          /* بداية شفافة */
+  transition: opacity 0.6s ease-in-out; /* حركة Fade */
+}
+
+.ready-btn.show {
+  display: block;
+  opacity: 1;
 }
 
 .ready-btn:hover {
@@ -115,7 +122,7 @@ const PASSWORD = "1052024";
 loginBtn.addEventListener("click", () => {
   if(passwordInput.value === PASSWORD){
     errorMsg.style.display = "none";
-    readyBtn.style.display = "block"; // يظهر زر جاهزه
+    readyBtn.classList.add("show"); // يظهر الزرار تدريجيًا
   } else {
     errorMsg.style.display = "block";
   }
@@ -123,8 +130,8 @@ loginBtn.addEventListener("click", () => {
 
 // الضغط على زر "جاهزه"
 readyBtn.addEventListener("click", () => {
-  // هنا هنربط الصفحه التانية، حالياً نقدر نحط رابط مؤقت
-  window.location.href = "secondPage.html"; // بعد ما نعمل الصفحة التانية
+  // هنا ممكن تربط بالصفحة التانية
+  window.location.href = "secondPage.html"; // بعد ما تعمل الصفحة التانية
 });
 </script>
 
