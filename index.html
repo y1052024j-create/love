@@ -13,7 +13,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 100vh;
   margin: 0;
 }
 
@@ -82,7 +82,7 @@ h1 {
   width: 90%;
   max-width: 320px;
   padding: 10px;
-  margin-top: 35px; /* مسافة من المربع */
+  margin-top: 20px; /* مسافة من المربع */
   border-radius: 10px;
   font-size: 15px;
   font-weight: 700;
@@ -115,15 +115,16 @@ h1 {
 </style>
 </head>
 <body>
-  
-  <h1>🔐ادخل كلمة السر</h1>
+
+<div class="login-container">
+  <h1>ادخل كلمة السر</h1>
   <input type="password" id="passwordInput" class="password-input" placeholder="اول يوم لينا">
   <button id="loginBtn" class="login-btn">دخول</button>
-  <p id="errorMsg" class="error-msg"/كلمة المرور غلط يعبيطه ❌</p>
+  <p id="errorMsg" class="error-msg">كلمة المرور خاطئة ❌</p>
 </div>
 
 <!-- زرار جاهزه تحت المربع مباشرة -->
-<button id="readyBtn" class="ready-btn">🙈جاهزه يروحي ؟ 🙈</button>
+<button id="readyBtn" class="ready-btn">جاهزه</button>
 
 <script>
 const passwordInput = document.getElementById("passwordInput");
@@ -131,24 +132,20 @@ const loginBtn = document.getElementById("loginBtn");
 const readyBtn = document.getElementById("readyBtn");
 const errorMsg = document.getElementById("errorMsg");
 
-const PASSWORD = "1111";
+const PASSWORD = "1052024";
 
 loginBtn.addEventListener("click", () => {
   if(passwordInput.value === PASSWORD){
     errorMsg.style.display = "none";
-    // نعطي تصريح دخول للصفحة التانية
-    sessionStorage.setItem("accessGranted", "true");
-    readyBtn.classList.add("show"); 
+    readyBtn.classList.add("show"); // يظهر الزرار تدريجي
   } else {
     errorMsg.style.display = "block";
   }
 });
 
 readyBtn.addEventListener("click", () => {
-  // الدخول للصفحة التانية
-  window.location.href = "secondPage.html"; 
+  window.location.href = "secondPage.html"; // الرابط للصفحة التانية
 });
-
 </script>
 
 </body>
