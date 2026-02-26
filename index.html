@@ -115,16 +115,17 @@ h1 {
 </style>
 </head>
 <body>
-
+<img src="photo.jpg" alt="صورة" class="my-image">
 <div class="login-container">
-  <h1>ادخل كلمة السر</h1>
+  
+  <h1>🔐ادخل كلمة السر</h1>
   <input type="password" id="passwordInput" class="password-input" placeholder="اول يوم لينا">
   <button id="loginBtn" class="login-btn">دخول</button>
-  <p id="errorMsg" class="error-msg">كلمة المرور خاطئة ❌</p>
+  <p id="errorMsg" class="error-msg"/كلمة المرور غلط يعبيطه ❌</p>
 </div>
 
 <!-- زرار جاهزه تحت المربع مباشرة -->
-<button id="readyBtn" class="ready-btn">جاهزه</button>
+<button id="readyBtn" class="ready-btn">🙈جاهزه يروحي ؟ 🙈</button>
 
 <script>
 const passwordInput = document.getElementById("passwordInput");
@@ -149,6 +150,14 @@ readyBtn.addEventListener("click", () => {
   // الدخول للصفحة التانية
   window.location.href = "secondPage.html"; 
 });
+  
+  .my-image{
+  width:200px;      /* تتحكم في الحجم */
+  max-width:100%;
+  display:block;
+  margin:20px auto; /* يخليها في النص */
+  border-radius:20px; /* يخلي الحواف دائرية */
+      }
 </script>
 
 </body>
