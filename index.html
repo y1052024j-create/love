@@ -16,7 +16,15 @@ body {
   height: 100vh;
   margin: 0;
 }
-
+  
+.top-image {
+  width: 80px;      /* عرض الصورة */
+  height: 80px;     /* طول الصورة */
+  object-fit: cover; /* يحافظ على نسب الصورة */
+  margin-bottom: 15px; /* مسافة بين الصورة والمربع */
+  border-radius: 10px; /* حواف دائرية لو عايز */
+}
+  
 /* المربع الرئيسي */
 .login-container {
   background: rgba(255,255,255,0.12);
@@ -115,8 +123,11 @@ h1 {
 </style>
 </head>
 <body>
-
+  
+<!-- إضافة الصورة فوق المربع -->
+<img src="your-image.png" alt="صورة صغيرة" class="top-image">
 <div class="login-container">
+  
   <h1>ادخل كلمة السر</h1>
   <input type="password" id="passwordInput" class="password-input" placeholder="اول يوم لينا">
   <button id="loginBtn" class="login-btn">دخول</button>
