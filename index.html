@@ -115,8 +115,7 @@ h1 {
 </style>
 </head>
 <body>
-<img src="Picsart_26-02-25_19-00-01-088.jpg" alt="صورة" class="my-image">
-<div class="login-container">
+<img src="Picsart_26-02-25_19-00-01-088.jpg" alt="صورة صغيرة" class="my-image">
   
   <h1>🔐ادخل كلمة السر</h1>
   <input type="password" id="passwordInput" class="password-input" placeholder="اول يوم لينا">
@@ -150,14 +149,15 @@ readyBtn.addEventListener("click", () => {
   // الدخول للصفحة التانية
   window.location.href = "secondPage.html"; 
 });
-  
-  .my-image{
-  width:1px;      /* تتحكم في الحجم */
-  max-width:1%;
+
+.my-image{
+  width:80px;        /* صغير جدًا */
+  max-width:90%;
+  height:auto;       /* يحافظ على نسب الصورة */
   display:block;
-  margin:20px auto; /* يخليها في النص */
-  border-radius:20px; /* يخلي الحواف دائرية */
-      }
+  margin:15px auto;  /* يبقى في النص ويبعد شوية عن الأعلى */
+  border-radius:20px; /* حواف دائرية */
+}
 </script>
 
 </body>
