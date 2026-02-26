@@ -17,15 +17,21 @@ body {
   margin: 0;
 }
 
+/* المربع الرئيسي */
 .login-container {
   background: rgba(255,255,255,0.12);
   backdrop-filter: blur(15px);
-  padding: 30px 20px;
   border-radius: 20px;
-  text-align: center;
   width: 90%;
   max-width: 320px;
   box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+  padding: 30px 20px;
+
+  /* Flex لضبط العناصر وسط المربع */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
@@ -48,7 +54,7 @@ h1 {
 }
 
 .password-input::placeholder {
-  color: #b0b0b0; /* placeholder رصاصي */
+  color: #b0b0b0;
   font-weight: 500;
 }
 
@@ -73,9 +79,10 @@ h1 {
 
 /* زرار جاهزه تحت المربع */
 .ready-btn {
-  width: 90%;  /* متساوي تقريبا مع المربع */
+  width: 90%;
   max-width: 320px;
   padding: 10px;
+  margin-top: 20px; /* مسافة من المربع */
   border-radius: 10px;
   font-size: 15px;
   font-weight: 700;
